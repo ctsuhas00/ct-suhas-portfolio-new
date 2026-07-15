@@ -1783,3 +1783,76 @@ p{ color:var(--forest-soft); }
   .btn{ width:100%; }
   .hero-actions{ flex-direction:column; }
 }
+/* =====================================================================
+   ADDITIONAL MOBILE & TABLET REFINEMENTS
+   Everything above this line is unchanged from the original file.
+   Desktop (1024px and up) is not affected by anything below — these
+   rules only ever fire under a max-width query, and later source order
+   lets them safely refine the existing @media blocks above without
+   editing a single line of them.
+===================================================================== */
+
+/* Belt-and-suspenders: guarantee no horizontal scrollbar can ever
+   appear, on top of the existing body{overflow-x:hidden}. */
+html{
+  overflow-x:hidden;
+}
+
+/* Timeline (Education) and expandable-card (Internships/Activities)
+   headers put a title, a no-wrap date/duration, and a chevron in one
+   flex row. On phones narrower than ~640px a long institution/company
+   name plus a nowrap date can squeeze together uncomfortably. This
+   makes the title take its own line first, with the date + chevron
+   flowing onto a second line beneath it — same accordion, same click
+   behavior, just readable at any width. */
+@media (max-width:640px){
+  .timeline-header,
+  .expand-header{
+    flex-wrap:wrap;
+  }
+
+  .timeline-header > div,
+  .expand-header > div{
+    flex:1 1 100%;
+  }
+
+  .timeline-meta,
+  .expand-meta{
+    white-space:normal;
+  }
+}
+
+/* Contact info list: protect against a long email address or URL ever
+   forcing the row wider than the viewport on very narrow phones. */
+@media (max-width:480px){
+  .contact-info-item{
+    min-width:0;
+  }
+  .contact-info-item > div{
+    min-width:0;
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
+}
+
+/* Small-phone pass (iPhone SE / older Android widths). Tightens outer
+   padding a touch further and gives the speech bubbles an explicit
+   viewport-relative ceiling so they can never overflow the screen. */
+@media (max-width:380px){
+  .hero{ padding:110px 16px 36px; }
+  .container{ padding:0 16px; }
+  .section{ padding:64px 0 16px; }
+
+  .hero-avatar-bubble,
+  .contact-avatar-bubble{
+    max-width:calc(100vw - 48px);
+  }
+
+  .project-row,
+  .about-card,
+  .skill-card,
+  .contact-info-card,
+  .contact-form-card{
+    padding:20px;
+  }
+}
