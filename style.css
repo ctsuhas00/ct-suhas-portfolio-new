@@ -1856,10 +1856,3 @@ html{
     padding:20px;
   }
 }
-
-.logo-img{
-    width:100px;      /* Increase or decrease this value */
-    height:100px;
-    object-fit:contain;
-    display:block;
-}
