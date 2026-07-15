@@ -1858,8 +1858,8 @@ html{
 }
 
 .logo-img{
-    width:60px;      /* Increase or decrease this value */
-    height:60px;
+    width:100px;      /* Increase or decrease this value */
+    height:100px;
     object-fit:contain;
     display:block;
 }
